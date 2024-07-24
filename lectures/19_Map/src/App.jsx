@@ -1,16 +1,15 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import FoodItems from "./components/FoodItems";
+import ErrorMessage from "./components/ErrorMessage";
 function App() {
-  let items = ["apple", "Mango", "Banana","cherry"];
+  let items = ["apple", "Mango", "Banana", "cherry","pineapple"];
+
   return (
     <>
       <h1>Fruits List</h1>
-      <ul className="list-group">
-        {items.map((item )=> (
-          <li key="" className="list-group-item">{item}</li>
-      ))}
-        
-      
-      </ul>
+      <ErrorMessage items={items}></ErrorMessage>
+       <FoodItems items={items}></FoodItems>
     </>
   );
 }
