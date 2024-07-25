@@ -1,19 +1,21 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
-function TodoItem(){
+function TodoItem({todoName,todoDate}){
 
-    let todoName = "Buy Milk";
-    let todoDate = "10/10/2024";
 
+
+    console.log('This is from i'+todoName)
+    console.log('This is from i'+todoDate)
     return <div className="container  mt-1 item-container">
     <div className="row">
-      <div class="col-6">
+      <div className="col-6">
         {todoName}
       </div>
-      <div class="col-4">
+      <div className="col-4">
         {todoDate}
       </div>
-      <div class="col-2">
-        <button class="btn btn-danger my-button">Delete</button>
+      <div className="col-2">
+        <button className="btn btn-danger my-button">Delete</button>
         </div>
     </div>
     </div>
