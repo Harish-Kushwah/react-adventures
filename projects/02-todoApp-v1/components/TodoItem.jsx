@@ -1,11 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 function TodoItem({todoName,todoDate}){
-
-
-
-    console.log('This is from i'+todoName)
-    console.log('This is from i'+todoDate)
     return <div className="container  mt-1 item-container">
     <div className="row">
       <div className="col-6">

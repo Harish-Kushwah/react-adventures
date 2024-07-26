@@ -12,7 +12,7 @@ function App() {
       <AddTodo />
 
       <TodoItem todoName={"Buy Milk"} todoDate={"10/06/2024"}></TodoItem>
-      <TodoItem todoName={"Buy Milk"} todoDate={"10/06/2024"}></TodoItem>
+      <TodoItem todoName={"Eat Food"} todoDate={"10/06/2024"}></TodoItem>
     </center>
   );
 }
