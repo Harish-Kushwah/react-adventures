@@ -1,7 +1,9 @@
 import styles from "./Display.module.css"
-const Display = ()=>{
+// eslint-disable-next-line react/prop-types
+const Display = ({onDisplay})=>{
+
     return <>
-    <input type="text" className={styles.display}/>
+    <input type="text" className={styles.display} value={onDisplay}/>
     </>
 }
 export default Display;

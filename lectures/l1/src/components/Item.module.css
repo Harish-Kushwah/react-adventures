@@ -1,0 +1,41 @@
+.Item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: 1px 2px 5px gray;
+    padding: 0px 5px 0px 5px;
+    border-left: 5px solid rgb(161, 16, 177);
+}
+.Item:hover{
+    box-shadow: 2px 5px 5px gray;
+    transition-duration: 2s;
+
+}
+.Item p{
+    text-align: left;
+}
+button{
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px;
+    background-color: rgb(60, 60, 243);
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.Btn{
+
+}
+#view{
+    background-color: green;
+}
+
+.active{
+    background-color: red;
+    color: red;
+    font-style: italic;
+}

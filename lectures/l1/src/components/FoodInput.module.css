@@ -1,0 +1,20 @@
+input{
+    width: 70%;
+    border-radius: 3px;
+    height: 25px;
+    border: 1px solid blue;
+    padding: 5px;
+}
+.InputContainer{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 50%;
+    margin-bottom: 5px;
+
+}
+#search{
+    width: 20%;
+    margin-right: 5px;
+    height: 35px;
+}
