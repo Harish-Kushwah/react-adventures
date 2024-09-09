@@ -10,13 +10,10 @@ function App() {
   const onButtonClick = (event)=>{
     let newExp =expression;
     if(event.target.innerText==="="){
-       newExp="solution";
+       newExp=eval(expression)
     }
     else if(event.target.innerText==="C"){
-        alert(newExp);
-        newExp =expression;
-        alert(newExp);
-
+        newExp ="";
     }
     else{
       newExp = expression + event.target.innerText;

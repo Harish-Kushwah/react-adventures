@@ -1,47 +1,44 @@
 /* eslint-disable react/no-unknown-property */
 
-import { useState } from "react";
-import AddTodo from "../components/AddTodo";
-import AppName from "../components/AppName";
-import TodoItem from "../components/TodoItem";
+import {  useState } from "react";
+import AddTodo from "./components/AddTodo";
+import AppName from "./components/AppName";
+import TodoItemsContext from "./store/todo-items-store"
+import WelcomeMessage from "./components/WelcomeMessage"
 import "./App.css";
-
+import TodoItems from "./components/TodoItems";
+// pure function
+// const todoItemsReducer = (action)=>{
+//   return [];
+// }
 function App() {
+ 
+  const [items,setTodoItems] = useState([]);
+  // const [newTodoItems,dispatchTodoItems] = useReducer(todoItemsReducer,[]);
 
-  var [inputText,setInputText]=useState();
-  var [dateInput,setDateInput]=useState();
-  var [items,setItems] = useState([]);
-
-  const addTodo = ()=>{
-      let newList = [...items,[inputText,dateInput]]
-      setItems(newList);
-      setInputText("");
-      setDateInput("");
-  }
-  const onInputChange = (event)=>{
-    inputText = event.target.value;
-    setInputText(inputText);
-  }
-  const onDateChange = (event)=>{
-    console.log(event);    
-    dateInput = event.target.value;
-    setDateInput(dateInput);
-  }
   const removeTodo =(event)=>{
     let elementId = event.target.id
-    items = items.filter(item => item[0] !== elementId)
-    setItems(items)
+    var newItems = items.filter(item => item[0] !== elementId)
+    setTodoItems(newItems)
   }
+
+
+
+
   return (
+    <TodoItemsContext.Provider value={{
+              items:items,
+              setTodoItems:setTodoItems,
+              removeTodo:removeTodo,
+            }
+      }>
     <center className="todo-container">
-      <AppName />
-      <AddTodo addTodo={addTodo} onInputChange={onInputChange} onDateInputChange={onDateChange} />
-      
-       {
-        items.map((item)=>(<TodoItem todoName={item[0]} todoDate={item[1]} key={item[0]} removeTodo={removeTodo}></TodoItem>))
-       }
-     
+      <AppName/>
+      <AddTodo/>
+      <WelcomeMessage/>
+      <TodoItems></TodoItems>
     </center>
+    </TodoItemsContext.Provider>
   );
 }
 

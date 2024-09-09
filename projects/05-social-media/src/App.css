@@ -1,0 +1,10 @@
+.app-container{
+  display: flex;
+}
+.content{
+  float: right;
+  width: 100%;
+}
+.sidebar{
+  height: 600px;
+}

@@ -3,7 +3,7 @@ import styles from "./Display.module.css"
 const Display = ({onDisplay})=>{
 
     return <>
-    <input type="text" className={styles.display} value={onDisplay}/>
+    <input type="text" className={styles.display} value={onDisplay} readOnly/>
     </>
 }
 export default Display;
