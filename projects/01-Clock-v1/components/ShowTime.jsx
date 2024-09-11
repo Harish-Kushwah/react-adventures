@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useState } from "react";
+
 function ShowTime() {
   // For todays date;
   Date.prototype.today = function () {
@@ -28,7 +31,18 @@ function ShowTime() {
 
 //   var datetime = new Date().today() + " - " + new Date().timeNow();
 
-  var time = new Date();
+  const [time,setTimeInv] = useState(new Date());
+  useEffect(()=>{
+    const intervalId = setInterval(()=>{
+      setTimeInv(new Date());
+    },1000);
+
+    return ()=>{
+      clearInterval(intervalId);
+    }
+
+  })
+  // var time = new Date();
   return (
     <div>
       <p>This is current time :{time.toLocaleDateString()} - {time.toLocaleTimeString()} </p>

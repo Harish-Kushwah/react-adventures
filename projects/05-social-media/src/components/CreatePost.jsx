@@ -1,8 +1,10 @@
 import { useContext, useRef } from "react";
 import { PostList as pl } from "../store/post-list-store";
+import { useNavigate } from "react-router-dom";
 const CreatePost = () => {
 
   const {addPost} = useContext(pl)
+  const navigate = useNavigate();
 
   const userIdElement = useRef();
   const postTitleElement = useRef();
@@ -18,13 +20,37 @@ const CreatePost = () => {
     const postBody = postBodyElement.current.value;
     const reactions = reactionsElement.current.value;
     const tags = tagsElement.current.value.split(",")
-    addPost(userId,postTitle,postBody,reactions,tags);
+    
+    userIdElement.current.value = "";
+    postTitleElement.current.value = "";
+    postBodyElement.current.value = "";
+    reactionsElement.current.value = "";
+    tagsElement.current.value = "";
+   
+    fetch('https://dummyjson.com/posts/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+          title: postTitle,
+          body: postBody,
+          reactions: {likes:reactions},
+          userId: userId,
+          tags:tags,
+        
+      })
+    })
+    .then(res => res.json())
+    .then(post=>{
+      addPost(post);
+      navigate("/");
+    })
+    // addPost(userId,postTitle,postBody,reactions,tags);
   }
 
   return (
     <form className="createPost" onSubmit={handleSubmit}>
       <div className="mb-3">
-        <label htmlFor="title" className="form-label">
+        <label htmlFor="user-id" className="form-label">
          Enter Your user id
         </label>
         <input
@@ -49,7 +75,7 @@ const CreatePost = () => {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="title" className="form-label">
+        <label htmlFor="content" className="form-label">
           Post content
         </label>
         <textarea
@@ -61,19 +87,19 @@ const CreatePost = () => {
         
       </div>
       <div className="mb-3">
-        <label htmlFor="title" className="form-label">
+        <label htmlFor="reactions" className="form-label">
          Number of reactionsElement
         </label>
         <input
           type="number"
           ref={reactionsElement}
           className="form-control"
-          id="title"
+          id="reactions"
           placeholder="How many people reacted to this post?"
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="title" className="form-label">
+        <label htmlFor="tagsElement" className="form-label">
           Enter your hashtagsElement here
         </label>
         <input
